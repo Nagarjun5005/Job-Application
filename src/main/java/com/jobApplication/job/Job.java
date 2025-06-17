@@ -1,23 +1,30 @@
-package com.jobApplication;
+package com.jobApplication.job;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.jobApplication.company.Company;
+import jakarta.persistence.*;
 
 @Entity
 public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String title;
-    String description;
-    double maxSalary;
-    double minSalary;
-    String location;
+    private Long id;
+    private  String title;
+    private String description;
+    private  double maxSalary;
+    private  double minSalary;
+    private String location;
+    @ManyToOne
+    private Company company;
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
 
     public Job() {
     }

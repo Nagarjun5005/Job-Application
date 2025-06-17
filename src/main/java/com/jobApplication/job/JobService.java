@@ -1,4 +1,4 @@
-package com.jobApplication;
+package com.jobApplication.job;
 
 import java.util.List;
 
