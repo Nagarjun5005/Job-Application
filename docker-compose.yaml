@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_container
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=nagarjun
+      - POSTGRES_PASSWORD=nagarjun
+      - PGDATA=/data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    restart: unless-stopped
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=nagarjun20n@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=nagarjun
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    volumes:
+      - PGADMIN:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+
+volumes:
+  postgres:
+  PGADMIN:
+
+networks:
+  postgres:
